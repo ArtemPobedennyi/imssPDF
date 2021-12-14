@@ -1,3 +1,5 @@
+import platform
+import os
 import time
 
 from selenium.webdriver import DesiredCapabilities, Chrome, ChromeOptions
@@ -40,8 +42,22 @@ class OTP:
             desired_capabilities['acceptInsecureCerts'] = True
             
             # create driver
+            
+            my_os = platform.system()
+            if my_os == 'Darwin': # MacOS
+                abspath = os.path.abspath('./chromedriver/chromedriver_mac')
+            elif my_os == 'Windows': # Windows
+                abspath = os.path.abspath('./chromedriver/chromedriver_win.exe')
+            elif my_os == 'Linux': # Linux
+                abspath = os.path.abspath('./chromedriver/chromedriver_linux')
+            else:
+                print('\terror => cannot detect os!')
+                return False
+
             self.driver = Chrome(
-                options=options, desired_capabilities=desired_capabilities)
+                executable_path=abspath,
+                options=options, 
+                desired_capabilities=desired_capabilities)
 
             print('\tsuccess')
         except Exception as ex:
