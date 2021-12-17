@@ -155,7 +155,7 @@ class IMSS:
             "screenData": {
                 "variables": {
                     "CURP": self.curp,
-                    "Detalles": False,
+                    "Detalles": True,
                     "Loaded": False,
                     "NSS": self.NSS,
                     "TokenExpirado": False,

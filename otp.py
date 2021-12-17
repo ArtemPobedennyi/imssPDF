@@ -16,7 +16,7 @@ class OTP:
         self.password = password
         self.driver = None
         self.otp_code = ''
-        self.timeout = 1
+        self.timeout = 2
 
         pass
 
